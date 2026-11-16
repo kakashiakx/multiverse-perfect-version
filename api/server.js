@@ -3,6 +3,7 @@ const path = require('node:path');
 
 const app = express();
 const port = Number(process.env.PORT) || 3000;
+const host = process.env.HOST || '0.0.0.0';
 const homepage = path.resolve(__dirname, '..', 'index.html');
 
 app.get('/', (req, res) => {
@@ -25,6 +26,6 @@ app.get('/api/hello', (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Web app and REST API running at http://localhost:${port}`);
+app.listen(port, host, () => {
+  console.log(`Web app and REST API running at http://${host}:${port}`);
 });

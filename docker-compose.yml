@@ -1,0 +1,22 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    working_dir: /usr/src/app
+    command: node api/server.js
+    environment:
+      PORT: 3000
+      HOST: 0.0.0.0
+    ports:
+      - "3000:3000"
+
+  rust:
+    build:
+      context: .
+      dockerfile: Dockerfile.rust
+    environment:
+      PORT: 8080
+      HOST: 0.0.0.0
+    ports:
+      - "8080:8080"

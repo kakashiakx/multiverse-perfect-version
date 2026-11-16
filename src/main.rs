@@ -24,9 +24,11 @@ async fn main() -> std::io::Result<()> {
         .and_then(|value| value.parse::<u16>().ok())
         .unwrap_or(8080);
 
-    println!("Rust API running at http://127.0.0.1:{port}");
+    let host = std::env::var("HOST").unwrap_or_else(|_| "0.0.0.0".to_string());
+
+    println!("Rust API running at http://{host}:{port}");
     HttpServer::new(|| App::new().service(health).service(hello))
-        .bind(("127.0.0.1", port))?
+        .bind((host, port))?
         .run()
         .await
 }

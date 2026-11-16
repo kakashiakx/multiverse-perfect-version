@@ -4,7 +4,9 @@
 
 A small starter project with an HTML frontend, a Node.js/Express REST API, and a Rust/Actix Web API.
 
-## Run the web app and REST API (Node.js)
+## Run locally
+
+### Web app + REST API (Node.js)
 
 Requirements: Node.js 18 or newer and npm.
 
@@ -14,26 +16,34 @@ npm install
 npm start
 ```
 
-Open <http://localhost:3000>. The page calls the API on the same origin. Try `/api/health` and `/api/hello?name=traveler` directly. Set `PORT` to use a different port.
+Open http://localhost:3000. The page calls `/api/health` and `/api/hello?name=traveler`.
 
-## Run the Rust API
+### Rust API
 
-Requirements: Rust and Cargo (install via [rustup](https://rustup.rs/)). From the repository root:
+Requirements: Rust and Cargo.
 
 ```bash
 cargo run
 ```
 
-The Rust API listens on <http://127.0.0.1:8080>; endpoints are `/health` and `/hello`. Set `PORT` to change its port.
+The Rust API listens on http://127.0.0.1:8080. Endpoints: `/health` and `/hello`.
+
+## Run everything with Docker Compose
+
+```bash
+docker compose up --build
+```
+
+Then:
+- Frontend + Node API: http://localhost:3000
+- Rust API: http://localhost:8080/health
 
 ## Project layout
 
 - `index.html` — frontend served by the Node.js app.
-- `api/` — Express REST API and its npm manifest.
-- `Cargo.toml`, `src/main.rs` — separate Rust/Actix Web API.
+- `api/` — Express REST API and npm manifest.
+- `Cargo.toml`, `src/main.rs` — Rust/Actix Web API.
 - `docs/` — project documentation.
-
-The Node and Rust APIs are independent services; running one does not start the other.
 
 ## Contributing
 
