@@ -1,0 +1,33 @@
+# .gitignore
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+.npm/
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+
+# Build outputs
+build/
+dist/
+out/
+coverage/
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
