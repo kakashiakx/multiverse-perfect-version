@@ -41,6 +41,8 @@ Then:
 - Frontend + Node API: http://localhost:3000
 - Rust API: http://localhost:8080/health
 
+Docker Compose also runs health checks for both services, so you can verify whether each one is ready before calling it.
+
 ## Project layout
 
 - `index.html` — frontend served by the Node.js app.
