@@ -38,16 +38,18 @@ docker compose up --build
 ```
 
 Then:
-- Frontend + Node API: http://localhost:3000
+- Frontend + Node API (via Nginx): http://localhost
+- Direct Node API: http://localhost:3000
 - Rust API: http://localhost:8080/health
 
-Docker Compose also runs health checks for both services, so you can verify whether each one is ready before calling it.
+Docker Compose also runs health checks for all services, and Nginx proxies requests to the Node API.
 
 ## Project layout
 
 - `index.html` — frontend served by the Node.js app.
 - `api/` — Express REST API and npm manifest.
 - `Cargo.toml`, `src/main.rs` — Rust/Actix Web API.
+- `nginx/` — Nginx reverse proxy configuration.
 - `docs/` — project documentation.
 - `.env.example` / `api/.env.example` — sample environment variables.
 
