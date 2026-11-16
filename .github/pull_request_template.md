@@ -1,12 +1,12 @@
 ## Pull Request Template
 
-### Mô tả thay đổi
-- Mô tả ngắn gọn về nội dung cập nhật.
+### Summary of changes
+- Brief description of the update.
 
-### Lý do
-- Giải thích vì sao cần thay đổi này.
+### Reason
+- Explain why this change is needed.
 
-### Kiểm tra
-- [ ] Đã chạy kiểm thử hoặc kiểm tra thủ công
-- [ ] Đã cập nhật tài liệu nếu cần
-- [ ] Đã xem lại diff trước khi gửi
+### Validation
+- [ ] Tests or manual checks were run
+- [ ] Documentation was updated if needed
+- [ ] The diff was reviewed before submission
