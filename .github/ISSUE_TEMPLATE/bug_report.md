@@ -1,5 +1,5 @@
 name: Bug report
-about: Báo cáo lỗi hoặc sự cố trong dự án
+about: Report a bug or issue in the project
 title: ""
 labels: bug
 assignees: ""
@@ -8,34 +8,34 @@ body:
   - type: markdown
     attributes:
       value: |
-        Cảm ơn bạn đã báo cáo lỗi. Hãy điền thông tin dưới đây để giúp chúng tôi khắc phục nhanh hơn.
+        Thanks for reporting a bug. Please fill out the information below so we can investigate it more quickly.
   - type: textarea
     id: description
     attributes:
-      label: Mô tả lỗi
-      description: Mô tả rõ ràng về vấn đề bạn gặp phải.
-      placeholder: Ví dụ: Khi ... thì ...
+      label: Bug description
+      description: Describe the issue clearly.
+      placeholder: Example: When ... then ...
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: Các bước để tái hiện
-      description: Liệt kê các bước để lặp lại lỗi.
+      label: Steps to reproduce
+      description: List the steps needed to reproduce the issue.
       placeholder: 1. ...
     validations:
       required: true
   - type: textarea
     id: expected
     attributes:
-      label: Kết quả mong đợi
-      description: Mô tả điều bạn mong đợi xảy ra.
+      label: Expected result
+      description: Describe what you expected to happen.
     validations:
       required: true
   - type: textarea
     id: actual
     attributes:
-      label: Kết quả thực tế
-      description: Mô tả hiện tượng thực tế.
+      label: Actual result
+      description: Describe the actual behavior you observed.
     validations:
       required: true
