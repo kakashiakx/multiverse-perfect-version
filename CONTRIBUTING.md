@@ -1,12 +1,12 @@
-# Hướng dẫn đóng góp
+# Contributing Guide
 
-Cảm ơn bạn đã quan tâm đến dự án **multiverse-perfect-version**!
+Thank you for your interest in **multiverse-perfect-version**.
 
-## Cách đóng góp
+## How to contribute
 
-1. Tạo một nhánh riêng cho thay đổi của bạn.
-2. Thực hiện thay đổi rõ ràng, tập trung vào một mục đích.
-3. Kiểm tra lại nội dung trước khi gửi.
-4. Mở pull request và mô tả ngắn gọn thay đổi cũng như lý do thực hiện.
+1. Create a dedicated branch for your change.
+2. Keep your edits focused and clearly scoped.
+3. Review your work before submitting it.
+4. Open a pull request with a brief description of the change and its purpose.
 
-Nếu phát hiện vấn đề hoặc có ý tưởng cải thiện, hãy tạo issue để trao đổi trước.
+If you notice a bug or have an improvement idea, please open an issue first so the discussion can happen in a clear and structured way.
