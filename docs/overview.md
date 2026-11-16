@@ -1,24 +1,24 @@
-# Tổng quan dự án
+# Project Overview
 
-`multiverse-perfect-version` là một dự án mẫu mô tả "một phiên bản hoàn hảo từ vũ trụ".
+`multiverse-perfect-version` is a sample project describing "a perfect version from the multiverse."
 
-## Mục tiêu
+## Goals
 
-- Cung cấp một template repo đơn giản, rõ ràng.
-- Dễ mở rộng cho các tính năng mới.
-- Phù hợp để làm nền tảng cho các dự án tiếp theo.
+- Provide a simple, clear repository template.
+- Make it easy to extend with new features.
+- Serve as a strong foundation for future projects.
 
-## Cấu trúc gợi ý
+## Suggested structure
 
-- `README.md`: giới thiệu dự án
-- `CONTRIBUTING.md`: hướng dẫn đóng góp
-- `LICENSE`: giấy phép
-- `CHANGELOG.md`: lịch sử thay đổi
-- `docs/`: tài liệu bổ sung
+- `README.md`: project introduction
+- `CONTRIBUTING.md`: contribution guide
+- `LICENSE`: project license
+- `CHANGELOG.md`: change history
+- `docs/`: additional documentation
 
-## Khởi đầu nhanh
+## Quick start
 
-1. Clone repository.
-2. Tạo môi trường làm việc.
-3. Thực hiện chỉnh sửa.
-4. Gửi pull request để review.
+1. Clone the repository.
+2. Set up your working environment.
+3. Make your changes.
+4. Open a pull request for review.
