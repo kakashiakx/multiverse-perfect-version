@@ -1,24 +1,36 @@
 # Project Architecture
 
-This repository is currently a documentation-first project. It has no application runtime or build system yet.
+This repository contains a static HTML dashboard, a Node.js/Express web server and REST API, and a separate Rust/Actix Web API.
 
-## Repository structure
+## Frontend
 
-- `README.md` — project introduction
-- `docs/overview.md` — project goals and getting started
-- `docs/architecture.md` — current structure and future guidance
-- `CONTRIBUTING.md` — contribution workflow
-- `CODE_OF_CONDUCT.md` — community expectations
-- `SECURITY.md` — vulnerability reporting guidance
-- `.github/` — issue and pull request templates
+- `index.html` is the browser entry point served at `/` by the Node.js app and by Nginx in the Docker Compose setup.
+- The page is branded **OMEGA-PRIME** and presents the multiverse-themed repository dashboard: telemetry cards, performance and test charts, timeline visualization, and an architecture overview.
+- Tailwind CSS, Chart.js, and Plotly are loaded from public CDNs. Chart and dashboard values are illustrative content defined in the HTML; the page does not fetch live telemetry from either API.
 
-## Current design
+## Services and routes
 
-There are no services, APIs, or runtime components to describe at this stage. Add source code, tests, and technical design documents when the project scope is defined.
+### Node.js / Express (`api/`)
 
-## Principles for future changes
+- `GET /` serves the repository's `index.html`.
+- `GET /api/health` returns the Node API health status.
+- `GET /api/hello?name=traveler` returns a greeting; the optional name is trimmed and limited to 80 characters.
 
-- Keep the project structure proportional to its needs.
-- Document new components and their responsibilities.
-- Add automated tests alongside executable code.
-- Avoid introducing dependencies or infrastructure before they are needed.
+### Rust / Actix Web (`src/main.rs`)
+
+- `GET /health` returns the Rust service health status.
+- `GET /hello` returns a greeting.
+- The service listens on port `8080` by default; `HOST` and `PORT` can override its bind address and port.
+
+## Deployment
+
+`docker-compose.yml` defines the Node API, Rust API, and Nginx services. Nginx serves the frontend and proxies API requests to the Node service. The services expose ports `80`, `3000`, and `8080` respectively, and include health checks.
+
+## Key files
+
+- `index.html` — dashboard UI and chart setup.
+- `api/server.js` — static page handler and Express API routes.
+- `src/main.rs` — Rust API routes and server setup.
+- `nginx/nginx.conf` — reverse-proxy and frontend serving configuration.
+- `docker-compose.yml` — local multi-service deployment.
+- `README.md` — setup and run instructions.
