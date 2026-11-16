@@ -1,14 +1,14 @@
 # Changelog
 
-Tất cả các thay đổi đáng chú ý trong dự án sẽ được ghi ở đây.
+All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-- Khởi tạo repository.
-- Thêm README hướng dẫn cơ bản.
-- Thêm tài liệu hướng dẫn đóng góp.
-- Thêm các tệp dự án chuẩn hóa như LICENSE, .gitignore và docs.
+- Initialize the repository.
+- Add a basic project README.
+- Add contribution guidelines.
+- Add standardized project files such as LICENSE, .gitignore, and documentation.
 
 ## [1.0.0] - 2026-11-16
 
-- Bản khởi đầu của dự án `multiverse-perfect-version`.
+- Initial release of the `multiverse-perfect-version` project.
