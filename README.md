@@ -12,6 +12,7 @@ Requirements: Node.js 18 or newer and npm.
 
 ```bash
 cd api
+cp .env.example .env
 npm install
 npm start
 ```
@@ -23,6 +24,7 @@ Open http://localhost:3000. The page calls `/api/health` and `/api/hello?name=tr
 Requirements: Rust and Cargo.
 
 ```bash
+cp .env.example .env
 cargo run
 ```
 
@@ -31,6 +33,7 @@ The Rust API listens on http://127.0.0.1:8080. Endpoints: `/health` and `/hello`
 ## Run everything with Docker Compose
 
 ```bash
+cp .env.example .env
 docker compose up --build
 ```
 
@@ -44,6 +47,7 @@ Then:
 - `api/` — Express REST API and npm manifest.
 - `Cargo.toml`, `src/main.rs` — Rust/Actix Web API.
 - `docs/` — project documentation.
+- `.env.example` / `api/.env.example` — sample environment variables.
 
 ## Contributing
 
