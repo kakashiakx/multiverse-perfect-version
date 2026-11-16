@@ -2,28 +2,42 @@
 
 *A perfect version from the multiverse.*
 
-## About
+A small starter project with an HTML frontend, a Node.js/Express REST API, and a Rust/Actix Web API.
 
-`multiverse-perfect-version` is a minimal starter project. The repository currently focuses on documentation and community guidance; it does not yet include an application, library, or executable commands.
+## Run the web app and REST API (Node.js)
 
-## Getting started
-
-Clone the repository:
+Requirements: Node.js 18 or newer and npm.
 
 ```bash
-git clone https://github.com/kakashiakx/multiverse-perfect-version.git
-cd multiverse-perfect-version
+cd api
+npm install
+npm start
 ```
 
-No dependencies need to be installed and no build is required at this time. See [`docs/overview.md`](docs/overview.md) for the project goals and [`docs/architecture.md`](docs/architecture.md) for the current structure.
+Open <http://localhost:3000>. The page calls the API on the same origin. Try `/api/health` and `/api/hello?name=traveler` directly. Set `PORT` to use a different port.
+
+## Run the Rust API
+
+Requirements: Rust and Cargo (install via [rustup](https://rustup.rs/)). From the repository root:
+
+```bash
+cargo run
+```
+
+The Rust API listens on <http://127.0.0.1:8080>; endpoints are `/health` and `/hello`. Set `PORT` to change its port.
+
+## Project layout
+
+- `index.html` — frontend served by the Node.js app.
+- `api/` — Express REST API and its npm manifest.
+- `Cargo.toml`, `src/main.rs` — separate Rust/Actix Web API.
+- `docs/` — project documentation.
+
+The Node and Rust APIs are independent services; running one does not start the other.
 
 ## Contributing
 
-Contributions are welcome. Before submitting a change, please read the [contribution guidelines](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md). Use an issue or pull request to suggest ideas, report bugs, or contribute improvements.
-
-## Security
-
-If you discover a security vulnerability, follow the instructions in [SECURITY.md](SECURITY.md). Please do not disclose sensitive information in a public issue.
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before submitting changes. For security reports, follow [SECURITY.md](SECURITY.md).
 
 ## License
 
