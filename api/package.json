@@ -1,0 +1,13 @@
+{
+  "name": "multiverse-perfect-version-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Simple REST API for the multiverse-perfect-version project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
