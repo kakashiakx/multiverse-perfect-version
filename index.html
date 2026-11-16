@@ -1,88 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A perfect version from the multiverse." />
-    <title>Multiverse Perfect Version</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMEGA-PRIME: The Multiversal Perfection Repository</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <style>
-      :root { color-scheme: dark; font-family: system-ui, sans-serif; }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 1.5rem;
-        color: #e5e7eb;
-        background: radial-gradient(ellipse at top, #1e3a8a, #0f172a 55%, #090e1b);
-      }
-      main {
-        width: min(100%, 38rem);
-        padding: clamp(1.5rem, 5vw, 3rem);
-        border: 1px solid #334155;
-        border-radius: 1.25rem;
-        background: rgb(15 23 42 / 88%);
-        box-shadow: 0 24px 70px rgb(0 0 0 / 35%);
-      }
-      h1 { margin: 0 0 .5rem; font-size: clamp(1.8rem, 6vw, 2.6rem); }
-      p { color: #cbd5e1; line-height: 1.6; }
-      .status { padding: .8rem 1rem; border-radius: .75rem; background: #1e293b; }
-      .controls { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
-      input, button { min-height: 2.75rem; border-radius: .5rem; font: inherit; }
-      input { flex: 1; min-width: 12rem; padding: 0 .8rem; color: inherit; background: #0f172a; border: 1px solid #475569; }
-      button { padding: 0 1rem; color: #082f49; background: #7dd3fc; border: 0; cursor: pointer; font-weight: 700; }
-      button:hover { background: #bae6fd; }
-      a { color: #7dd3fc; }
-      #greeting { min-height: 1.6em; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .plotly-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
     </style>
-  </head>
-  <body>
-    <main>
-      <h1>multiverse-perfect-version</h1>
-      <p>A perfect version from the multiverse.</p>
-      <p id="status" class="status" role="status" aria-live="polite">Checking API status…</p>
-      <form id="hello-form">
-        <label for="name">Get a greeting from the REST API</label>
-        <div class="controls">
-          <input id="name" name="name" maxlength="80" placeholder="Your name" />
-          <button type="submit">Say hello</button>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">🌌</span>
+                    <span class="font-extrabold text-xl tracking-tight text-blue-600">OMEGA-PRIME</span>
+                    <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-xs font-bold bg-violet-100 text-violet-700">Ω-777-Alpha</span>
+                </div>
+                <div class="flex space-x-2 sm:space-x-6 text-xs sm:text-sm font-semibold text-slate-600">
+                    <a href="#kpis" class="hover:text-blue-600 transition">Telemetry</a>
+                    <a href="#performance" class="hover:text-blue-600 transition">Benchmarks</a>
+                    <a href="#verification" class="hover:text-blue-600 transition">Omniscience CI</a>
+                    <a href="#architecture" class="hover:text-blue-600 transition">Blueprint</a>
+                </div>
+            </div>
         </div>
-      </form>
-      <p id="greeting" role="status" aria-live="polite"></p>
-      <p>API endpoint: <a href="/api/health">/api/health</a></p>
+    </nav>
+
+    <header class="bg-gradient-to-br from-blue-600 via-violet-600 to-cyan-500 text-white py-14 px-4 sm:px-6 lg:px-8 shadow-md">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-400 text-slate-950 shadow-sm">BUILD: TRANSCENDENT</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-sm">COVERAGE: 100.000%</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950 shadow-sm">TECH DEBT: 0.0s</span>
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-300 text-slate-950 shadow-sm">TIMELINE: EARTH-616-PRIME</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight mb-4">
+                OMEGA-PRIME: The Multiversal Perfection Repository
+            </h1>
+            <p class="text-lg sm:text-xl text-blue-100 max-w-3xl italic border-l-4 border-amber-300 pl-4 mb-6">
+                "In an infinite multiverse of infinite branches, this is the single timeline where every build passes, every dependency resolves on the first try, and documentation actually matches the codebase."
+            </p>
+            <p class="text-sm sm:text-base text-white/90 max-w-4xl leading-relaxed">
+                Harvested from the optimal branch of the Local Multiverse (Coordinate Ω-777-Alpha), OMEGA-PRIME is a hyper-dimensional, self-healing, zero-latency software monorepo that eliminates race conditions via quantum entanglement and compiles code prior to semicolon completion.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+        <section id="kpis" class="space-y-6">
+            <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-600">
+                <h2 class="text-2xl font-extrabold text-slate-900 mb-2">1. Dimensional Telemetry & Core Guarantees</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    Unlike standard repositories bound by classical thermodynamic entropy, OMEGA-PRIME operates at absolute computational equilibrium. The key performance indicators below summarize the baseline physical guarantees verified across the Earth-616-Prime branch.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-blue-600 flex flex-col justify-between">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Compile Complexity</span>
+                        <span class="text-2xl">⚡</span>
+                    </div>
+                    <div class="text-3xl font-black text-blue-600 mb-1">O(1) Planck</div>
+                    <p class="text-xs text-slate-500">Compiles 10⁶ lines of code instantaneously via tachyonic pre-caching.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-violet-600 flex flex-col justify-between">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Verified Timelines</span>
+                        <span class="text-2xl">🛡️</span>
+                    </div>
+                    <div class="text-3xl font-black text-violet-600 mb-1">14,000,605</div>
+                    <p class="text-xs text-slate-500">Parallel reality branches validated simultaneously on every commit.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-emerald-500 flex flex-col justify-between">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Technical Debt</span>
+                        <span class="text-2xl">✨</span>
+                    </div>
+                    <div class="text-3xl font-black text-emerald-600 mb-1">0.0 Seconds</div>
+                    <p class="text-xs text-slate-500">Continuous Entropy-Reducer refactors spaghetti code into pure O(log n) art.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-amber-500 flex flex-col justify-between">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-xs font-bold uppercase tracking-wider text-slate-400">AST Doc Sync</span>
+                        <span class="text-2xl">🔒</span>
+                    </div>
+                    <div class="text-3xl font-black text-amber-500 mb-1">100.000%</div>
+                    <p class="text-xs text-slate-500">Quantum-locked to the Abstract Syntax Tree; outdated docs are physically impossible.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="performance" class="space-y-6">
+            <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-violet-600">
+                <h2 class="text-2xl font-extrabold text-slate-900 mb-2">2. Zero-Latency Scaling & Entropy Resistance</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    With a single environment flag (<code>SCALE_TO_INFINITY=true</code>), OMEGA-PRIME decouples execution speed from hardware constraints. The visualizations below contrast classical baseline repositories against OMEGA-PRIME across deployment tiers and long-term maintenance lifecycles.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-md p-6 flex flex-col">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Build Latency Across Hardware Tiers (ms)</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        While baseline builds degrade exponentially from a Raspberry Pi Zero to a Dyson Sphere cluster, OMEGA-PRIME maintains a constant 0.004ms initialization footprint across all stellar scales.
+                    </p>
+                    <div class="chart-container my-auto">
+                        <canvas id="latencyBarChart"></canvas>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-blue-600">
+                        Key Takeaway: 99.99999% reduction in build latency at megastructure scale.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-6 flex flex-col">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">12-Month Technical Debt Accumulation (Hours)</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Classical repositories accumulate compounding complexity over time. OMEGA-PRIME's <code>entropy-reducer</code> module neutralizes code rot in real time, holding technical debt strictly at zero.
+                    </p>
+                    <div class="chart-container my-auto">
+                        <canvas id="entropyLineChart"></canvas>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-violet-600">
+                        Key Takeaway: Zero maintenance overhead regardless of repository age or contributor count.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="verification" class="space-y-6">
+            <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-cyan-500">
+                <h2 class="text-2xl font-extrabold text-slate-900 mb-2">3. Omniscient CI & Multiversal Test Suite</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    Running <code>npm run test:multiverse</code> executes 1,050,499 deterministic assertions in 0.003ms total elapsed time. Beyond standard unit and integration checks, the precognitive engine validates edge cases the developer has not yet imagined.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-md p-6 flex flex-col">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Test Suite Composition (1,050,499 Assertions)</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        Over 95% of OMEGA-PRIME's test suite consists of precognitive edge-case simulations generated by the quantum runtime prior to pull request creation.
+                    </p>
+                    <div class="chart-container my-auto">
+                        <canvas id="testDonutChart"></canvas>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-emerald-600">
+                        Key Takeaway: 100% pass rate with 0.000ms latency on precognitive edge cases.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-6 flex flex-col">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Timeline Stability vs. AST Synchronization</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        WebGL distribution analysis across 500 sampled timelines shows Earth-616-Prime achieving total convergence (1.00 AST Sync, 0.00 Entropy) compared to unstable reality forks.
+                    </p>
+                    <div id="plotlyTimelineScatter" class="plotly-container my-auto"></div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs font-semibold text-cyan-600">
+                        Key Takeaway: Complete elimination of merge conflicts across dimensional branches.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture" class="space-y-6">
+            <div class="bg-white rounded-xl shadow-md p-6 border-t-4 border-emerald-500">
+                <h2 class="text-2xl font-extrabold text-slate-900 mb-2">4. Causal Lifecycle & Monorepo Architecture</h2>
+                <p class="text-slate-600 leading-relaxed">
+                    OMEGA-PRIME replaces linear Git workflows with a closed causal loop. Every contribution is optimized to O(log n), converted into haiku commit messages, and approved by your future self within 3 seconds.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-lg font-bold text-slate-900 mb-4">Self-Healing Causal Execution Pipeline</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-stretch">
+                    <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs font-black text-blue-600 uppercase mb-1">Stage 01</div>
+                            <h4 class="font-bold text-slate-900 text-base mb-2">Telepathic Inference</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Compiler infers developer intent before keystrokes complete, correcting logic without red squiggly lines.</p>
+                        </div>
+                        <div class="mt-4 text-right font-black text-blue-600 text-lg">➔</div>
+                    </div>
+
+                    <div class="bg-violet-50 border-2 border-violet-200 rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs font-black text-violet-600 uppercase mb-1">Stage 02</div>
+                            <h4 class="font-bold text-slate-900 text-base mb-2">Entropy Reduction</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Pre-commit hooks refactor algorithms to O(log n) and format commit logs into structured haikus.</p>
+                        </div>
+                        <div class="mt-4 text-right font-black text-violet-600 text-lg">➔</div>
+                    </div>
+
+                    <div class="bg-cyan-50 border-2 border-cyan-200 rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs font-black text-cyan-700 uppercase mb-1">Stage 03</div>
+                            <h4 class="font-bold text-slate-900 text-base mb-2">Omniscience CI</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Executes 1,050,499 tests across 14,000,605 parallel timelines in 0.003ms with zero node_modules.</p>
+                        </div>
+                        <div class="mt-4 text-right font-black text-cyan-700 text-lg">➔</div>
+                    </div>
+
+                    <div class="bg-emerald-50 border-2 border-emerald-200 rounded-xl p-5 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs font-black text-emerald-700 uppercase mb-1">Stage 04</div>
+                            <h4 class="font-bold text-slate-900 text-base mb-2">Retroactive Merge</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">Pull request is reviewed, approved, and merged by your future self in under 3.0 seconds.</p>
+                        </div>
+                        <div class="mt-4 text-right font-black text-emerald-600 text-lg">✨</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl shadow-md p-5 border border-slate-200">
+                    <div class="font-mono text-xs font-bold text-blue-600 mb-1">.github/workflows/</div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">omniscience-ci.yml</h4>
+                    <p class="text-xs text-slate-600">Orchestrates parallel verification across 14,000,605 reality branches simultaneously.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 border border-slate-200">
+                    <div class="font-mono text-xs font-bold text-violet-600 mb-1">core/quantum-runtime/</div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">Zero-Overhead Engine</h4>
+                    <p class="text-xs text-slate-600">Executes compiled bytecode in O(1) Planck time via entangled qubit state caching.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 border border-slate-200">
+                    <div class="font-mono text-xs font-bold text-cyan-600 mb-1">core/causal-router/</div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">Precognitive Routing</h4>
+                    <p class="text-xs text-slate-600">Dispatches API responses nanoseconds before client requests leave the network interface.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 border border-slate-200">
+                    <div class="font-mono text-xs font-bold text-emerald-600 mb-1">core/entropy-reducer/</div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">Autonomous Refactoring</h4>
+                    <p class="text-xs text-slate-600">Detects runtime anomalies in alternate dimensions and patches main retroactively.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 border border-slate-200">
+                    <div class="font-mono text-xs font-bold text-amber-600 mb-1">docs/</div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">akashic-records.md</h4>
+                    <p class="text-xs text-slate-600">Self-updating knowledge base thermodynamically bound to the live AST.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 border border-slate-200">
+                    <div class="font-mono text-xs font-bold text-rose-600 mb-1">scripts/</div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">summon-coffee.sh ☕</h4>
+                    <p class="text-xs text-slate-600">Materializes artisanal double espresso directly through standard USB-C ports.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 border border-slate-200">
+                    <div class="font-mono text-xs font-bold text-indigo-600 mb-1">root config</div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">.env.perfection</h4>
+                    <p class="text-xs text-slate-600">Pre-configured with optimal universal constants including <code>SCALE_TO_INFINITY=true</code>.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-md p-5 border border-slate-200">
+                    <div class="font-mono text-xs font-bold text-slate-700 mb-1">container</div>
+                    <h4 class="font-bold text-slate-900 text-sm mb-2">Dockerfile.singularity</h4>
+                    <p class="text-xs text-slate-600">0-byte container image possessing infinite compute capacity and zero vulnerabilities.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <footer class="bg-slate-900 text-slate-300 py-8 px-4 sm:px-6 lg:px-8 mt-12">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+            <div>
+                <span class="font-bold text-white">OMEGA-PRIME</span> — Distributed under the <span class="text-cyan-400 font-semibold">Universal Harmony License (UHL-1.0)</span>.
+            </div>
+            <div class="font-mono text-slate-400">
+                git clone --depth=∞ https://github.com/multiverse-prime/omega-prime.git
+            </div>
+        </div>
+    </footer>
+
     <script>
-      const status = document.querySelector('#status');
-      const greeting = document.querySelector('#greeting');
-
-      async function loadHealth() {
-        try {
-          const response = await fetch('/api/health');
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          const data = await response.json();
-          status.textContent = `API status: ${data.status} — ${data.message}`;
-        } catch (error) {
-          status.textContent = `API unavailable: ${error.message}`;
+        function wrapLabel(label) {
+            if (label.length <= 16) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (let i = 0; i < words.length; i++) {
+                const word = words[i];
+                if ((currentLine + ' ' + word).trim().length <= 16) {
+                    currentLine = (currentLine + ' ' + word).trim();
+                } else {
+                    if (currentLine.length > 0) {
+                        lines.push(currentLine);
+                    }
+                    currentLine = word;
+                }
+            }
+            if (currentLine.length > 0) {
+                lines.push(currentLine);
+            }
+            return lines;
         }
-      }
 
-      document.querySelector('#hello-form').addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const name = document.querySelector('#name').value.trim();
-        const query = new URLSearchParams({ name });
-        greeting.textContent = 'Loading…';
-        try {
-          const response = await fetch(`/api/hello?${query}`);
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          const data = await response.json();
-          greeting.textContent = data.message;
-        } catch (error) {
-          greeting.textContent = `Could not reach the API: ${error.message}`;
+        const sharedTooltipConfig = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    } else {
+                        return label;
+                    }
+                }
+            }
+        };
+
+        const latencyCtx = document.getElementById('latencyBarChart').getContext('2d');
+        new Chart(latencyCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    wrapLabel('Raspberry Pi Zero Edge Node'),
+                    wrapLabel('Global Multi-Region Cloud'),
+                    wrapLabel('Dyson Sphere Stellar Cluster')
+                ],
+                datasets: [
+                    {
+                        label: 'Baseline Reality (ms)',
+                        data: [4200, 18500, 98000],
+                        backgroundColor: '#94a3b8',
+                        borderRadius: 6
+                    },
+                    {
+                        label: 'OMEGA-PRIME (ms)',
+                        data: [0.004, 0.004, 0.004],
+                        backgroundColor: '#2563eb',
+                        borderRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    tooltip: sharedTooltipConfig
+                },
+                scales: {
+                    y: {
+                        type: 'logarithmic',
+                        title: {
+                            display: true,
+                            text: 'Execution Time (ms - Log Scale)'
+                        }
+                    }
+                }
+            }
+        });
+
+        const entropyCtx = document.getElementById('entropyLineChart').getContext('2d');
+        new Chart(entropyCtx, {
+            type: 'line',
+            data: {
+                labels: [
+                    wrapLabel('Month 01 Initialization'),
+                    wrapLabel('Month 03 Feature Expansion'),
+                    wrapLabel('Month 06 Scale Migration'),
+                    wrapLabel('Month 09 Legacy Integration'),
+                    wrapLabel('Month 12 Annual Audit')
+                ],
+                datasets: [
+                    {
+                        label: 'Baseline Reality Debt (Hours)',
+                        data: [40, 165, 480, 1120, 2600],
+                        borderColor: '#f59e0b',
+                        backgroundColor: 'rgba(245, 158, 11, 0.15)',
+                        fill: true,
+                        tension: 0.35
+                    },
+                    {
+                        label: 'OMEGA-PRIME Debt (Hours)',
+                        data: [0, 0, 0, 0, 0],
+                        borderColor: '#7c3aed',
+                        backgroundColor: 'rgba(124, 58, 237, 0.15)',
+                        fill: true,
+                        tension: 0.1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    tooltip: sharedTooltipConfig
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Accumulated Debt (Hours)'
+                        }
+                    }
+                }
+            }
+        });
+
+        const testCtx = document.getElementById('testDonutChart').getContext('2d');
+        new Chart(testCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    wrapLabel('Precognitive Edge Cases'),
+                    wrapLabel('Core Unit Assertions'),
+                    wrapLabel('Cross-Timeline Integration')
+                ],
+                datasets: [
+                    {
+                        data: [999999, 42000, 8500],
+                        backgroundColor: ['#2563eb', '#10b981', '#06b6d4'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '62%',
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    tooltip: sharedTooltipConfig
+                }
+            }
+        });
+
+        const baselineX = [];
+        const baselineY = [];
+        for (let i = 0; i < 120; i++) {
+            const sync = +(0.2 + (i / 120) * 0.68).toFixed(3);
+            const stability = +(15 + sync * 65 + Math.sin(i) * 8).toFixed(2);
+            baselineX.push(sync);
+            baselineY.push(stability);
         }
-      });
 
-      loadHealth();
+        const traceAlternate = {
+            x: baselineX,
+            y: baselineY,
+            mode: 'markers',
+            type: 'scattergl',
+            name: 'Alternate Timelines',
+            marker: {
+                color: '#94a3b8',
+                size: 7,
+                opacity: 0.7
+            }
+        };
+
+        const tracePrime = {
+            x: [1.0],
+            y: [100.0],
+            mode: 'markers',
+            type: 'scattergl',
+            name: 'Earth-616-Prime (Ω-777)',
+            marker: {
+                color: '#7c3aed',
+                size: 16
+            }
+        };
+
+        const plotlyLayout = {
+            margin: { t: 20, r: 20, b: 45, l: 50 },
+            xaxis: {
+                title: 'AST Documentation Sync Ratio',
+                range: [0.1, 1.08],
+                gridcolor: '#f1f5f9'
+            },
+            yaxis: {
+                title: 'Build Stability (%)',
+                range: [0, 110],
+                gridcolor: '#f1f5f9'
+            },
+            legend: {
+                orientation: 'h',
+                y: -0.22
+            },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)'
+        };
+
+        Plotly.newPlot('plotlyTimelineScatter', [traceAlternate, tracePrime], plotlyLayout, {
+            responsive: true,
+            displayModeBar: false
+        });
     </script>
-  </body>
+</body>
 </html>
